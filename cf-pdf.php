@@ -112,9 +112,11 @@ function cf_pdf_listener(){
 		if( CF_PDF_Link::verify_nonce(  $_GET[ 'nonce' ], $entry_id, $form_id  ) ){
 			cf_pdf_send( $entry_id , $form_id );
 		}
+
+		wp_die( esc_html__( 'Error generating PDF', 'cf-pdf'));
 	}
 
-	wp_die( esc_html__( 'Error generating PDF', 'cf-pdf'));
+
 }
 
 /**
