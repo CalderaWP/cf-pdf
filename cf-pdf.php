@@ -175,6 +175,10 @@ function cf_pdf_get_form_name( $form_id ){
  * @return mixed
  */
 function cf_pdf_add_link( $out, $form ){
+	if( isset( $data[ 'cf_er' ] ) ){
+		return $out;
+	}
+
 	$entry_id = $out[ 'data' ][ 'cf_id' ];
 	$form_id = $form[ 'ID' ];
 	$pdf_id = CF_PDF_DB::get_instance()->find_id( $entry_id, $form_id );

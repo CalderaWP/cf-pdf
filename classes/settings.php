@@ -32,7 +32,7 @@ abstract class CF_PDF_Settings {
 	 * @return mixed|void
 	 */
 	public static function get(){
-		return get_option( self::$key_option );
+		return get_option( static::$key_option, '' );
 	}
 
 	/**
@@ -46,7 +46,7 @@ abstract class CF_PDF_Settings {
 	 */
 	public static function save( $key ){
 
-		return update_option( self::$key_option, $key );
+		return update_option( static::$key_option, $key );
 
 	}
 
