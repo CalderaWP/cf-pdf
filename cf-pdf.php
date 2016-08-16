@@ -52,7 +52,9 @@ function cf_pdf_init(){
 			//add hooks
 			add_action( 'init', 'cf_pdf_listener' );
 			add_filter( 'caldera_forms_mailer', array( 'CF_PDF_Capture', 'capture' ), 10, 3 );
-			add_filter( 'caldera_forms_ajax_return', 'cf_pdf_add_link', 10, 2 );
+			add_filter( 'caldera_forms_ajax_return', 'cf_pdf_add_link_pdf', 10, 2 );
+			add_filter( 'caldera_forms_render_notices', 'cf_pdf_add_link_not_ajax', 10, 2 );
+
 			if( current_user_can( Caldera_Forms::get_manage_cap() ) ){
 				add_action( 'wp_ajax_cf_pdf_admin_save', 'cf_pdf_save_key_ajax_cb' );
 			}
@@ -163,8 +165,6 @@ function cf_pdf_get_form_name( $form_id ){
 /**
  * Add the PDF link to response
  *
- * @TODO Make work for non-AJAX submissions
- *
  * @since 0.1.0
  *
  * @uses "caldera_forms_ajax_return" filter
@@ -174,7 +174,7 @@ function cf_pdf_get_form_name( $form_id ){
  *
  * @return mixed
  */
-function cf_pdf_add_link( $out, $form ){
+function cf_pdf_add_link_pdf( $out, $form ){
 	if( isset( $data[ 'cf_er' ] ) || false == CF_PDF_Form_Settings::enabled( $form[ 'ID' ] ) ){
 		return $out;
 	}
@@ -189,22 +189,100 @@ function cf_pdf_add_link( $out, $form ){
 	$link = CF_PDF_Link::create_link( $entry_id, $form_id );
 
 	if( filter_var( $link, FILTER_VALIDATE_URL ) ){
-		$classes = apply_filters( 'cf_pdf_link_classes', ' alert alert-success', $form );
-		$message = $title =  __( 'Download Form Entry As PDF', 'cf-pdf' );
-		$message = apply_filters( 'cf_pdf_link_message', $message, $form );
-		$title = apply_filters( 'cf_pdf_link_title', $title, $form );
-		$out[ 'html' ] .= sprintf( '<div class="%s"><a href="%s" title="%s" target="_blank">%s</a></div>',
-			esc_attr( $classes ),
-			esc_url( $link ),
-			esc_attr( $title ),
-			esc_html( $message )
-		);
+
+		$out[ 'html' ] .= cf_pdf_link_html( $form, $link );
 	}
 
 	return $out;
 }
 
+/**
+ * Add link to success messages when the form is NOT submitted via AJAX
+ *
+ * @since 0.2.0
+ *
+ * @uses "caldera_forms_render_notices" filter
+ *
+ * @param array $notices
+ * @param $form
+ *
+ * @return array
+ */
+function cf_pdf_add_link_not_ajax( $notices, $form ){
+	if( ! isset( $_GET[ 'cf_id' ] ) ||  ! isset( $_GET[ 'cf_su' ] ) ){
+		return $notices;
+	}
 
+	$entry_id = absint( $_GET[ 'cf_id' ] );
+	$form_id = $form[ 'ID' ];
+	$pdf_id = CF_PDF_DB::get_instance()->find_id( $entry_id, $form_id );
+	if( ! is_numeric( $pdf_id ) ){
+		return $notices;
+	}
+
+	$link = CF_PDF_Link::create_link( $entry_id, $form_id );
+	if( filter_var( $link, FILTER_VALIDATE_URL ) ){
+
+		$html = cf_pdf_link_html( $form, $link );
+		if( isset( $notices[ 'success' ], $notices[ 'success' ][ 'note' ] ) ){
+			$notices[ 'success' ][ 'note' ] = '<div class=" alert alert-success">' . $notices[ 'success' ][ 'note' ] . '</div>' . $html;
+		}else{
+			$notices[ 'success' ][ 'note' ] = $html;
+		}
+
+	}
+
+	return $notices;
+
+}
+
+/**
+ * Create HTML for linl
+ *
+ * @param array $form Form config
+ * @param string $link The actual link.
+ *
+ * @return string
+ */
+function cf_pdf_link_html( $form, $link ){
+
+	/**
+	 * Filter the classes for the generate PDF link HTML
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $classes The classes as string.
+	 * @param array $form Form config
+	 */
+	$classes = apply_filters( 'cf_pdf_link_classes', ' alert alert-success', $form );
+
+	/**
+	 * Filter the title attribute for the generate PDF link HTML
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $title Title attribute.
+	 * @param array $form Form config
+	 */
+	$message = $title =  __( 'Download Form Entry As PDF', 'cf-pdf', $form );
+
+	/**
+	 * Filter the visible content for the generate PDF link HTML
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $message Link message
+	 * @param array $form Form config
+	 */
+	$message = apply_filters( 'cf_pdf_link_message', $message, $form );
+	$title = apply_filters( 'cf_pdf_link_title', $title, $form );
+	return sprintf( '<div class="%s"><a href="%s" title="%s" target="_blank">%s</a></div>',
+		esc_attr( $classes ),
+		esc_url( $link ),
+		esc_attr( $title ),
+		esc_html( $message )
+	);
+}
 /**
  * Save settings via AJAX
  *
