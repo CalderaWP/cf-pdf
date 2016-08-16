@@ -40,13 +40,13 @@ abstract class CF_PDF_Settings {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $key
+	 * @param string $value
 	 *
 	 * @return bool
 	 */
-	public static function save( $key ){
+	public static function save( $value ){
 
-		return update_option( static::$key_option, $key );
+		return update_option( static::$key_option, $value );
 
 	}
 

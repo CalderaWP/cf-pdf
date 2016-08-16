@@ -8,7 +8,7 @@
  * @link
  * @copyright 2016 CalderaWP LLC
  */
-
+$forms = Caldera_Forms_Forms::get_forms( true );
 ?>
 <style>
 	p.submit{ display:inline;float:left;}
@@ -44,10 +44,10 @@
 		</li>
 		<li class="cf-pdf-notice-wrap">
 			<p id="cf-pdf-not-saved" class="error alert cf-pdf-notice cf-pdf-error" style="display: none;visibility: hidden" aria-hidden="true">
-				<?php esc_html_e( 'Settings could not be saved. Please refresh the page and try again.', 'cf-pdf' ); ?>
+				<?php esc_html_e( 'Settings could not be saved. Please refresh the page and try again', 'cf-pdf' ); ?>
 			</p>
 			<p id="cf-pdf-saved" class="error alert cf-pdf-success cf-pdf-notice" style="display: none;visibility: hidden" aria-hidden="true">
-				<?php esc_html_e( 'Settings saved.', 'cf-pdf' ); ?>
+				<?php esc_html_e( 'Settings Saved', 'cf-pdf' ); ?>
 			</p>
 		</li>
 
@@ -56,6 +56,7 @@
 <div class="cf-pdf-admin-page-wrap" style="margin-top: 75px;">
 
 	<form id="cf-pdf-admin-form">
+		<input name="action" value="cf_pdf_admin_save" type="hidden" />
 		<?php wp_nonce_field( 'cf_pdf_admin_save', 'cf-pdf-nonce', false ); ?>
 		<div class="caldera-config-group">
 			<label for="cf-pdf-api-key">
@@ -63,10 +64,12 @@
 			</label>
 			<input id="cf-pdf-api-key" value="<?php echo esc_attr( CF_PDF_API_Key::get() ); ?>" name="cf-pdf-api-key" />
 		</div>
+		<?php include __DIR__ . '/form-settings.php'; ?>
 		<div class="caldera-config-group">
 			<?php submit_button( __( 'Save', 'cf-pdf' ) ); ?>
 			<span class="spinner" style="display:inline;float:left;" id="cf-pdf-spinner" aria-hidden="true"></span>
 		</div>
+
 	</form>
 	<div class="caldera-config-group">
 		<p id="cf-pdf-purchase-link">

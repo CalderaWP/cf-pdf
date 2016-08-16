@@ -78,11 +78,8 @@ class CF_PDF_Capture {
 	 * @return bool
 	 */
 	protected static function should_capture( array  $form ){
-		if( isset( $form[ 'cf-pdf' ] ) ){
-			return $form[ 'cf-pdf' ];
-		}
+		return CF_PDF_Form_Settings::enabled( $form[ 'ID' ] );
 
-		return true;
 	}
 
 	/**

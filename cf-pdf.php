@@ -214,9 +214,16 @@ function cf_pdf_add_link( $out, $form ){
  */
 function cf_pdf_save_key_ajax_cb(){
 
-	if( isset( $_POST[ '_nonce' ], $_POST[ 'key' ] ) ){
-		if( wp_verify_nonce( $_POST[ '_nonce' ], 'cf_pdf_admin_save' ) ){
-			$saved = CF_PDF_API_Key::save( $_POST[ 'key' ] );
+	if( isset( $_POST[ 'cf-pdf-nonce' ] ) ){
+		if( wp_verify_nonce( $_POST[ 'cf-pdf-nonce' ], 'cf_pdf_admin_save' ) ){
+			if ( isset( $_POST[ 'cf-pdf-api-key' ] ) ) {
+				$saved = CF_PDF_API_Key::save( $_POST[ 'cf-pdf-api-key' ] );
+			}
+			if( isset( $_POST[ 'enable' ] ) && is_array( $_POST[ 'enable' ] ) ){
+				CF_PDF_Form_Settings::bulk_update( $_POST[ 'enable' ] );
+			}else{
+				CF_PDF_Form_Settings::disable_for_all();
+			}
 
 			status_header( 200 );
 			wp_send_json_success();
