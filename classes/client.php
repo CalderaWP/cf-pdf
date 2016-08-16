@@ -172,7 +172,7 @@ class CF_PDF_Client {
 	 * @return array
 	 */
 	protected function get_args(){
-		$name = cf_pdf_get_form_name( $this->form_id );
+		$name = cf_pdf_get_file_name( $this->form_id, $this->entry_id );
 		$code = CF_PDF_API_Key::get();
 
 		$request_args =  array(
