@@ -175,7 +175,7 @@ function cf_pdf_get_form_name( $form_id ){
  * @return mixed
  */
 function cf_pdf_add_link( $out, $form ){
-	if( isset( $data[ 'cf_er' ] ) ){
+	if( isset( $data[ 'cf_er' ] ) || false == CF_PDF_Form_Settings::enabled( $form[ 'ID' ] ) ){
 		return $out;
 	}
 
