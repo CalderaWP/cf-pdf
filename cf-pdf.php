@@ -268,15 +268,6 @@ function cf_pdf_link_html( $form, $link ){
 	 */
 	$classes = apply_filters( 'cf_pdf_link_classes', ' alert alert-success', $form );
 
-	/**
-	 * Filter the title attribute for the generate PDF link HTML
-	 *
-	 * @since 0.1.0
-	 *
-	 * @param string $title Title attribute.
-	 * @param array $form Form config
-	 */
-	$message = $title =  __( 'Download Form Entry As PDF', 'cf-pdf', $form );
 
 	/**
 	 * Filter the visible content for the generate PDF link HTML
@@ -286,8 +277,18 @@ function cf_pdf_link_html( $form, $link ){
 	 * @param string $message Link message
 	 * @param array $form Form config
 	 */
-	$message = apply_filters( 'cf_pdf_link_message', $message, $form );
-	$title = apply_filters( 'cf_pdf_link_title', $title, $form );
+	$message = apply_filters( 'cf_pdf_link_message', __( 'Download Form Entry As PDF', 'cf-pdf', $form ), $form );
+
+	/**
+	 * Filter the title attribute for the generate PDF link HTML
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $title Title attribute.
+	 * @param array $form Form config
+	 */
+	$title = apply_filters( 'cf_pdf_link_title',  __( 'Download Form Entry As PDF', 'cf-pdf' ), $form );
+
 	return sprintf( '<div class="%s"><a href="%s" title="%s" target="_blank">%s</a></div>',
 		esc_attr( $classes ),
 		esc_url( $link ),
