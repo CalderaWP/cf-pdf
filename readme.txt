@@ -3,8 +3,8 @@ Contributors: Shelob9
 Donate link: https://CalderaWP.com
 Tags: forms, caldera forms, Caldera Forms, wpform, pdf, form to PDF, calder, pdf
 Requires at least: 4.5
-Tested up to: 4.6
-Stable tag: 0.1.0
+Tested up to: 4.6.1
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,4 +26,10 @@ Requires an API key.
 * Go to the Caldera Forms PDF submenu of the Caldera Forms menu and enter your API key
 * Click save
 
-== FAQ ==
+== Frequently Asked Questions ==
+For More information see [our FAQ](https://Caldera.Space#faq-container)
+
+== Screenshots ==
+ 1. API settings
+
+== Upgrade Notice ==
