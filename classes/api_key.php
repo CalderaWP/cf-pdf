@@ -16,11 +16,9 @@ class CF_PDF_API_Key extends CF_PDF_Settings{
 	 * @inheritDoc
 	 */
 	public static function save( $value ){
-		if( $value == strtolower( preg_replace("/[^ \w]+/", "", $value) ) ){
-			$stored  = update_option( self::$key_option, $value );
-			return $stored;
-		}
+		$value = strip_tags( $value );
+		$stored  = update_option( self::$key_option, $value );
+		return $stored;
 
-		return false;
 	}
 }

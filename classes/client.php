@@ -140,6 +140,8 @@ class CF_PDF_Client {
 
 			}
 
+		}else{
+			wp_die( var_dump( $r ) );
 		}
 
 
