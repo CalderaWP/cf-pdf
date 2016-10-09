@@ -56,7 +56,7 @@ class CF_PDF_Client {
 	 *
 	 * @var string
 	 */
-	protected $api = 'https://caldera.space';
+	protected $api = 'https://caldera.space/api/pdf';
 
 	/**
 	 * CF_PDF_Client constructor.
@@ -126,7 +126,8 @@ class CF_PDF_Client {
 		 *
 		 * @param string $url The API URL
 		 */
-		$url = apply_filters( 'cf_pdf_pdf_url', trailingslashit( $this->api ) . 'pdf' );
+		$url = apply_filters( 'cf_pdf_pdf_url', trailingslashit( $this->api )  );
+
 		$r = wp_remote_post( $url, array(
 			'body' => $this->get_args()
 		) );
@@ -141,7 +142,7 @@ class CF_PDF_Client {
 			}
 
 		}else{
-			wp_die( var_dump( $r ) );
+			wp_die( wp_remote_retrieve_body( $r  ) );
 		}
 
 
