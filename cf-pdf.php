@@ -3,7 +3,7 @@
  Plugin Name: Caldera Forms PDF
  * Plugin URI:  https://caldera.space
  * Description: Create PDFs from Caldera Forms Submissions
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author:      Josh Pollock for CalderaWP LLC
  * Author URI:  https://CalderaWP.com
  * License:     GPLv2+
