@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Create PDFs from Caldera Forms Submissions
 
 == Description ==
-Create PDFs from [Caldera Forms]((https://calderawp.com/caldera-forms?utm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) Submission
+Create PDFs from [Caldera Forms](https://calderawp.com/caldera-forms?utm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) Submission
 
 
 Turn your Caldera Forms emails into PDFs. More awesome features coming soon.
