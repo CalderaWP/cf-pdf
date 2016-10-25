@@ -1,5 +1,5 @@
 # Caldera Forms PDF
-This plugin requires an API key. Sign up at: [Caldera.space](https://Caldera.space) when the beta period is complete. If you would like early access, sign up at [Caldera.space](https://Caldera.space).
+Sign up at: [Caldera.space](https://Caldera.space)
 
 * Documentation & FAQ : https://calderawp.com/doc/caldera-forms-pdf-getting-started/
 * Caldera Forms can be installed for free from [WordPress.org](https://wordpress.org/plugins/caldera-forms/), try it, it's fun.
