@@ -3,24 +3,22 @@ Contributors: Shelob9
 Donate link: https://CalderaWP.com
 Tags: forms, caldera forms, Caldera Forms, wpform, pdf, form to PDF, calder, pdf
 Requires at least: 4.5
-Tested up to: 4.6.1
-Stable tag: 1.0.1
+Tested up to: 4.8
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create PDFs from Caldera Forms Submissions
 
 == Description ==
-Create PDFs from [Caldera Forms](https://calderawp.com/caldera-forms?utm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) Submission
+Caldera Forms PDF has been replaced with [Caldera Forms Pro](https://calderaforms.com/proutm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) which has better and more. If you are using Caldera Forms PDF, please [get in touch](https://calderaforms.com/contactutm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf)) to get a special cross-grade offer.
 
+[Caldera Forms Pro](https://calderaforms.com/proutm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) makes everything about the emails that go out from your Caldera Form more awesome. It provides a visual layout builder for designing beautiful emails, reliable email delivery with open and click rate statistics, and the option to attach PDFs to the emails.
 
-Turn your Caldera Forms emails into PDFs. More awesome features coming soon.
-
-* Sign up and learn more at [Caldera.Space](https://Caldera.space?utm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf)
-* [Read the getting started guide](https://calderawp.com/doc/caldera-forms-pdf-getting-started?utm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf).
 
 == Changelog ==
-
+= 1.0.2 =
+Readme and admin nag to switch to Caldera Forms Pro.
 = 1.0.1 =
 * First release to WordPress.org
 * Beta
