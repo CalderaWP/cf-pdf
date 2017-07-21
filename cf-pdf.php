@@ -3,8 +3,8 @@
  Plugin Name: Caldera Forms PDF
  * Plugin URI:  https://caldera.space
  * Description: Create PDFs from Caldera Forms Submissions
- * Version: 1.0.1
- * Author:      Josh Pollock for CalderaWP LLC
+ * Version: 1.0.2
+ * Author:      Caldera Labs
  * Author URI:  https://CalderaWP.com
  * License:     GPLv2+
  * Text Domain: cf-pdf
@@ -334,3 +334,17 @@ function cf_pdf_save_key_ajax_cb(){
 
 }
 
+/**
+ * Show admin notice about Caldera Forms Pro
+ *
+ * @since 1.5.3
+ */
+function cf_pdf_admin_notice() {
+	$class = 'notice notice-error';
+	$message = sprintf(
+		esc_html__( 'Caldera Forms PDF is now a part of Caldera Forms Pro learn more at %s', 'caldera-forms-pdf' ), '<a href="https://calderaforms.com/prou?tm_source=wp-admin&utm_medium=plugins&utm_campaign=caldera-forms-pdf" target="_blank">CalderaFormsPro.com</a>'
+		);
+
+	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message  );
+}
+add_action( 'admin_notices', 'cf_pdf_admin_notice' );
