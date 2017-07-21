@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Create PDFs from Caldera Forms Submissions
 
 == Description ==
-Caldera Forms PDF has been replaced with [Caldera Forms Pro](https://calderaforms.com/pro?utm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) which has better and more. If you are using Caldera Forms PDF, please [get in touch](https://calderaforms.com/contactutm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf)) to get a special cross-grade offer.
+Caldera Forms PDF has been replaced with [Caldera Forms Pro](https://calderaforms.com/pro?utm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) which has better form to PDF capabilities and more features. If you are using Caldera Forms PDF, please [get in touch](https://calderaforms.com/contactutm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) to get a special cross-grade offer.
 
 [Caldera Forms Pro](https://calderaforms.com/pro?utm_source=dotOrg&utm_medium=plugins&utm_campaign=caldera-forms-pdf) makes everything about the emails that go out from your Caldera Form more awesome. It provides a visual layout builder for designing beautiful emails, reliable email delivery with open and click rate statistics, and the option to attach PDFs to the emails.
 
